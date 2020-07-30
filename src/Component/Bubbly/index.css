@@ -1,0 +1,52 @@
+/* app.js */
+.bubbly-walkthrough {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+.bubbly-walkthrough .logo {
+    height: 120px;
+}
+.bubbly-walkthrough .bubbly-time-btns {
+    display: flex;
+    flex-direction: column;
+}
+.bubbly-walkthrough .bubbly-time-btns button {
+    padding: 12px;
+    width: 200px;
+    background: url(https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    background-size: cover;
+    margin-bottom: 12px;
+    cursor: pointer;
+    color: white;
+    box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+    border: 3px solid darkslategray;
+}
+.bubbly-walkthrough .bubbly-time-btns .scores {
+    padding: 12px;
+    width: 370px;
+    background: url(https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    background-size: cover;
+    margin-bottom: 12px;
+    cursor: pointer;
+    color: white;
+    box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+    border: 3px solid darkslategray;
+}
+/* Start.js */
+.bubbly-walkthrough .bubbly-time-btns a {
+    color: white;
+    background: url(https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    background-size: cover;
+    text-align: center;
+    font-size: smaller;
+    padding: 12px;
+    width: 170px;
+    border: 3px solid darkslategray;
+    box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}

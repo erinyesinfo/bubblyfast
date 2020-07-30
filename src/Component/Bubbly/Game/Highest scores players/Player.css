@@ -1,0 +1,46 @@
+.players {
+    height: 300px;
+    width: 250px;
+    padding: 0 60px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+.players .player {
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 3px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+}.players .player .username { margin-bottom: 10px; }
+.players .player.gold {
+    background-image: url(https://images.unsplash.com/photo-1507608158173-1dcec673a2e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+    background-size: cover;
+}
+.players .player.silver {
+    color: black;
+    background-image: url(https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+    background-size: cover;
+}
+.players .player .icon {
+    position: absolute;
+    width: 30px;
+    top: 0px;
+    left: 0px;
+}.players .player .icon.winner { top: 5px; }
+.players .player .points .coin {
+    width: 13px;
+    margin-left: 6px;
+}
+.players .player .number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    font-size: 20px;
+}
+.players .player .number.iron { color: black; }
+.players .player .number.silver { color: aquamarine; }
+.players .player .number.gold { color: greenyellow; }
+.players .player .number.diamend { color: yellow; }

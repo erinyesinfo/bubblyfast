@@ -1,0 +1,68 @@
+.form-register {
+    color: white;
+    background: #0005;
+    width: 220px;
+    padding: 50px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    position: relative;
+}
+.form-register .register-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}.form-register .register-inputs:last-of-type { margin-bottom: 0; }
+
+/* Sign up labels */
+.form-register .register-inputs label { cursor: pointer;position: relative; }
+.form-register .register-inputs .username-active, .form-register .register-inputs .email-active, .form-register .register-inputs .password-active {
+    color: chartreuse;
+}
+/* Sign up inputs */
+.form-register .register-inputs input {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #eee;
+}.form-register .register-inputs input:hover { border: 1px solid rgb(212, 210, 210); }
+.form-register .register-inputs input:focus { border: 1px solid bisque }
+.form-register .register-inputs .eye {
+    color: black;
+    position: absolute;
+    top: 27px;
+    right: 7px;
+    cursor: pointer;
+}
+/* Sign up btn */
+.form-register .signUp-btn {
+    color: white;
+    background-color: black;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 30px;
+    cursor: pointer;
+}.form-register .signUp-btn:hover { color: forestgreen; }
+.form-register .signUp-btn:active { color: chartreuse; }
+.form-register .errors {
+    color: yellow;
+    font-size: 14px;
+    font-family: sans-serif;
+    margin: 0;
+}
+.form-register .logIn {
+    position: absolute;
+    bottom: 10px;
+    left: 44%;
+    cursor: pointer;
+}.form-register .logIn:hover { text-decoration: underline;}
+
+@media screen and (max-width: 576px) {
+    .form-register .register-inputs label { font-size: 14px; }
+    .form-register .register-inputs input { padding: 6px; }
+    .form-register .register-inputs .eye {
+        top: 24px;
+        right: 12px;
+    }
+    .form-register .signUp-btn { padding: 7px; }
+}

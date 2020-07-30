@@ -1,0 +1,64 @@
+/* SideBar.js */
+.sideBar {
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+.sideBar-header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: black;
+    color: white;
+    font-size: 20px;
+}
+.sideBar-header .innerHeader {
+    flex: 1;
+    text-align: center;
+    color: chartreuse
+}.sideBar-header .innerHeader.red { color: red; }
+.sideBar-header .ball-cover {
+    background: white;
+    border-radius: 3px;
+}
+.sideBar-header .ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer
+}
+.sideBar-content .btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+.sideBar-content .btns .playAgain {
+    color: white;
+    background: black;
+    font-size: 16px;
+    padding: 12px;
+    width: 150px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.sideBar-content .btns .exit {
+    color: white;
+    background: brown;
+    font-size: 16px;
+    padding: 12px;
+    width: 150px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.sideBar-content .users {
+    display: flex;
+    padding: 10px 20px;
+    background: teal;
+    color: white;
+    justify-content: space-between;
+    border-bottom: 0.5px solid #046a6a;
+}.sideBar-content .users:last-of-type { border-bottom: none }

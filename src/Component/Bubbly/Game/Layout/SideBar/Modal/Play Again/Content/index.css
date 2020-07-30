@@ -1,0 +1,33 @@
+.endGame {
+    width: 300px;
+    height: 250px;
+}
+.endGame .username {
+    font-size: 36px;
+    font-weight: bolder;
+    color: steelblue;
+}
+.endGame .points {
+    font-size: 36px;
+    color: forestgreen;
+    margin-top: 10px;
+}.endGame .points .coin {
+    width: 17px;
+    margin-left: 7px;
+}
+.endGame .game {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.endGame .game button {
+    color: white;
+    background: black;
+    width: 150px;
+    padding: 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+}.endGame .game button.menu { background-color: brown; }
