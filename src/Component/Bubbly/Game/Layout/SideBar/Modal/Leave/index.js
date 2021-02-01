@@ -27,6 +27,7 @@ class Leave extends React.Component {
   };
   handleBack = () => {
     this.props.handleCloseLeave();
+    this.props.playAgainWithDifferentColor();
     this.props.handlePlayGame(true);
     this.props.handleShowScores(true);
     this.props.handleGameTime(true);

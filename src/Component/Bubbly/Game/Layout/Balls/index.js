@@ -7,10 +7,6 @@ import "./index.css";
 import Coin from '../../../../../IMG/Coin.svg';
 
 class Balls extends Component {
-    colorsToBeRemovedPlusPoints = (target, isTrue) => {
-        this.props.colorsToBeRemoved(target, isTrue);
-        this.props.points();
-    };
     helperColors = () => {
         const blackColor = { background: "black" };
         return (
@@ -32,9 +28,9 @@ class Balls extends Component {
         return (
             <React.Fragment>
                 {this.helperColors()}
-                {this.props.Colors.map((color, i) => {                    
+                {this.props.Colors.map(color => {            
                     return <Ball key={color.id} id={color.id}
-                        colorsToBeRemovedPlusPoints={this.colorsToBeRemovedPlusPoints}
+                        sameballsID={color.sameballsID}
                         style={color.style}
                         randomColors={color.randomColors}
                         randomBalls={color.randomBalls}

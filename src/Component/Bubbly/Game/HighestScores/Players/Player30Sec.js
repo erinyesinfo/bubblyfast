@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../Actions';
-import Server from '../../../../API';
+import * as actions from '../../../../../Actions';
+import Server from '../../../../../API';
 import './Player.css';
 
-import Coin from '../../../../IMG/Coin.svg';
+import Coin from '../../../../../IMG/Coin.svg';
 // winner icons
-import winner1 from '../../../../IMG/icon/trophy.svg';
-import winner2 from '../../../../IMG/icon/Award, champion, general, office, prize, ribbon, winner icon.svg';
-import winner3 from '../../../../IMG/icon/Award, badge, prize icon.svg';
-import winner4 from '../../../../IMG/icon/medal.svg';
+import winner1 from '../../../../../IMG/icon/trophy.svg';
+import winner2 from '../../../../../IMG/icon/Award, champion, general, office, prize, ribbon, winner icon.svg';
+import winner3 from '../../../../../IMG/icon/Award, badge, prize icon.svg';
+import winner4 from '../../../../../IMG/icon/medal.svg';
 
 class Player30Sec extends Component {
     constructor(props) {
@@ -20,19 +20,19 @@ class Player30Sec extends Component {
     };
     componentDidMount() { this.callAPI(); };
     callAPI = async () => {
-        const api = await Server.get("/readPlayer-2mn");
+        const api = await Server.get("/readPlayer-30sec");
         if (api.data === "failure") {
             return this.setState({ errors: true });
-        } else {
-            this.props.handlePlayers2Mn(JSON.parse(api.data || "[]"));
+        } else {        
+            this.props.handlePlayers30Sec(JSON.parse(api.data || "[]"));
             return this.setState({ errors: false });
         }
     };
     render() {
-        if (this.props.Players2Mn.length > 0) {
+        if (this.props.Players30Sec.length > 0) {
             return (
                 <div className="players">
-                    {this.props.Players2Mn.map((palyer, i) => {
+                    {this.props.Players30Sec.map((palyer, i) => {
                         if (i === 0 || i === 1 || i === 2) {
                             return (
                                 <div className="player gold" key={palyer.username}>
@@ -66,7 +66,7 @@ class Player30Sec extends Component {
 };
 
 const mapStateToProps = getState => {
-    return { Players2Mn: getState.Players2Mn };
+    return { Players30Sec: getState.Players30Sec };
 };
 
 export default connect(mapStateToProps, actions)(Player30Sec);

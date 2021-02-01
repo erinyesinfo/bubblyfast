@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../Actions';
+import * as actions from '../../../../Actions';
 
-import Header from '../../Header';
-import Footer from '../../Footer';
+import Header from '../../../Header';
+import Footer from '../../../Footer';
 
 class App extends Component {
     handleScoresTime = e => this.props.handleScoresTime(e.target.name);
@@ -30,8 +30,4 @@ class App extends Component {
     };
 };
 
-const mapStateToProps = getState => {
-    return { ScoresTime: getState.ScoresTime };
-};
-
-export default connect(mapStateToProps, actions)(App);
+export default connect(null, actions)(App);

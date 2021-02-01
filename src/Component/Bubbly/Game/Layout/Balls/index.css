@@ -22,16 +22,40 @@
     padding: 10px 0;
 }
 .ball {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer
 }.hide { display: none }
+.ball-fadeout {
+    -moz-animation: propertiesFadeOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    -webkit-animation: propertiesFadeOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    -o-animation: propertiesFadeOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation: propertiesFadeOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+@-webkit-keyframes propertiesFadeOut /* Safari and Chrome */ {
+    100% {
+        -webkit-transform: scale(0.7) translate(10%, -10%);
+        -o-transform: scale(0.7) translate(10%, -10%);
+        transform: scale(0.7) translate(10%, -10%);
+        opacity: 0;
+    }
+}
+@keyframes propertiesFadeOut {
+    100% {
+        -ms-transform: scale(0.7) translate(10%, -10%);
+        -moz-transform: scale(0.7) translate(10%, -10%);
+        -webkit-transform: scale(0.7) translate(10%, -10%);
+        -o-transform: scale(0.7) translate(10%, -10%);
+        transform: scale(0.7) translate(10%, -10%);
+        opacity: 0;
+    }
+}
+
 
 @media screen and (max-width: 1268px) {
     .ball {
         width: 70px;
-        height: 70px;
         border-radius: 50%;
         cursor: pointer
     }
@@ -39,7 +63,6 @@
 @media screen and (max-width: 1122px) {
     .ball {
         width: 65px;
-        height: 65px;
         border-radius: 50%;
         cursor: pointer
     }
@@ -47,7 +70,6 @@
 @media screen and (max-width: 1050px) {
     .ball {
         width: 60px;
-        height: 60px;
         border-radius: 50%;
         cursor: pointer
     }
@@ -55,23 +77,20 @@
 @media screen and (max-width: 992px) {
     .ball {
         width: 50px;
-        height: 50px;
         border-radius: 50%;
         cursor: pointer
     }
 }
 @media screen and (max-width: 792px) {
     .ball {
-        width: 40px;
-        height: 40px;
+        width: 45px;
         border-radius: 50%;
         cursor: pointer
     }
 }
 @media screen and (max-width: 656px) {
     .ball {
-        width: 35px;
-        height: 35px;
+        width: 40px;
         border-radius: 50%;
         cursor: pointer
     }

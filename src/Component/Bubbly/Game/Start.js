@@ -27,7 +27,7 @@ class Start extends Component {
                 <div className="bubbly-time-btns">
                     <button type="button" onClick={this.handlePlay}>Play</button>
                     <button type="button" onClick={this.handleScores}>High Scores</button>
-                    <a rel="noopener noreferrer" href="https://erinyes.netlify.com" target="_blank">More</a>
+                    <a rel="noopener noreferrer" href="https://erinyes.netlify.app" target="_blank">More</a>
                     <button type="button" onClick={this.handleCallApi}>Log out</button>
                 </div>
                 <Footer />

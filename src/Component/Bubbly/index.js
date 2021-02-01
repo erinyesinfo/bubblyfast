@@ -6,7 +6,7 @@ import "./index.css";
 import Start from './Game/Start';
 import Layout from './Game/Layout/index';
 import HighestScores from './Game/HighestScores';
-import HighestScores2 from './Game/HighestScores2';
+import PlayersScores from './Game/HighestScores/PlayersScores';
 import Game from './Game/Game';
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
         } else if (this.props.Scores === true && this.props.ScoresTime === false) {
             return <HighestScores />;
         } else if (this.props.ScoresTime !== false) {
-            return <HighestScores2 />;
+            return <PlayersScores />;
         } else {
             return <Game />;
         };

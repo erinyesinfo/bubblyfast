@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../Actions';
+import * as actions from '../../../../Actions';
 
-import Header from '../../Header';
-import Footer from '../../Footer';
+import Header from '../../../Header';
+import Footer from '../../../Footer';
 
-import Player30Sec from './Highest scores players/Player30Sec';
-import Player2mn from './Highest scores players/Player2mn';
-import Player10mn from './Highest scores players/Player10mn';
+import Player30Sec from './Players/Player30Sec';
+import Player2mn from './Players/Player2mn';
+import Player10mn from './Players/Player10mn';
 
-class HighestScores2 extends Component {
+class PlayersScores extends Component {
     handleBack = () => {
         this.props.handlePlayGame(true);
         this.props.handleShowScores(true);
@@ -59,4 +59,4 @@ const mapStateToProps = getState => {
     return { ScoresTime: getState.ScoresTime };
 };
 
-export default connect(mapStateToProps, actions)(HighestScores2);
+export default connect(mapStateToProps, actions)(PlayersScores);

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../Actions';
-import Server from '../../../../API';
+import * as actions from '../../../../../Actions';
+import Server from '../../../../../API';
 import './Player.css';
 
-import Coin from '../../../../IMG/Coin.svg';
+import Coin from '../../../../../IMG/Coin.svg';
 // winner icons
-import winner1 from '../../../../IMG/icon/trophy.svg';
-import winner2 from '../../../../IMG/icon/Award, champion, general, office, prize, ribbon, winner icon.svg';
-import winner3 from '../../../../IMG/icon/Award, badge, prize icon.svg';
-import winner4 from '../../../../IMG/icon/medal.svg';
+import winner1 from '../../../../../IMG/icon/trophy.svg';
+import winner2 from '../../../../../IMG/icon/Award, champion, general, office, prize, ribbon, winner icon.svg';
+import winner3 from '../../../../../IMG/icon/Award, badge, prize icon.svg';
+import winner4 from '../../../../../IMG/icon/medal.svg';
 
 class Player30Sec extends Component {
     constructor(props) {
