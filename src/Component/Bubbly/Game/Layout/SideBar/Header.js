@@ -201,7 +201,7 @@ const mapStateToProps = getState => {
         PlayerID: getState.PlayerID,
         Points: getState.Points,
         Time: getState.Time,
-        NextColor: getState.NextColor.randomColors,
+        NextColor: getState.NextColor.color
     };
 };
 

@@ -11,18 +11,11 @@ import Game from './Game/Game';
 
 class App extends Component {
     componentDidUpdate() {
-        if (!document.cookie.includes('5cec755218d9-ad3c-4c07-5c78-f907e689')) {
+        if (this.props.SessionExpires < new Date()) {
             window.location.reload();
         }
     };
     handleGameTime = e => this.props.handleGameTime(e.target.name);
-    handleBack = () => {
-        this.props.handlePlayGame(true);
-        this.props.handleShowScores(true);
-        this.props.handleGameTime(true);
-        this.props.handleScoresTime(true);
-        return this.props.points(true);
-    };
     render() {
         if (this.props.Play === false && this.props.Scores !== true ) {
             return <Start />;
@@ -40,10 +33,11 @@ class App extends Component {
 
 const mapStateToProps = getState => {
     return {
+        SessionExpires: getState.SessionExpires,
         Play: getState.Play,
         Scores: getState.Scores,
         Time: getState.Time,
-        ScoresTime: getState.ScoresTime,
+        ScoresTime: getState.ScoresTime
     };
 };
 

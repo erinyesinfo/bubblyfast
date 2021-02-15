@@ -1,10 +1,10 @@
-import { getNextColor } from '../Actions/types.js';
+import { getSessionExpires } from '../Actions/types.js';
 
-const INIALSTATE = { color: '' };
+const INIALSTATE = "";
 
 export default (state = INIALSTATE, action) => {
     switch (action.type) {
-        case getNextColor:
+        case getSessionExpires:
             return action.payload;
         default:
             return state;

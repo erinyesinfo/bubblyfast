@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import { connect } from 'react-redux';
 import * as actions from '../Actions';
-import Server from '../API';
 import BG from '../IMG/1704619.jpg';
 import BG_lower from '../IMG/1704619-lower.jpg';
+import Server from '../API';
 import './App.css';
 
 import Header from './Header';
@@ -32,6 +32,7 @@ class App extends Component {
                 }
             }
             this.props.handleUpdatePlayerId(api.data.id);
+            this.props.handleFetchUserSessionExpires(api.data.expires);
             return this.props.handleUsername(api.data.username);
         } else {
             if (cookies.get('5cec755218d9-ad3c-4c07-5c78-f907e689')) {

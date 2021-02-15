@@ -12,6 +12,8 @@ export const getNextColor = 'getNextColor';
 
 export const getPlayerID = 'getPlayerID';
 
+export const getSessionExpires = 'getSessionExpires';
+
 export const getPoints = 'getPoints';
 
 export const getUsername = 'getUsername';

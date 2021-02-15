@@ -12,10 +12,10 @@ class Ball extends Component {
     handleAddOneColor = sameballsID => {
         const { id, Colors } = this.props;
         const findBallIndex = Colors.findIndex(color => color.id === id);
-        this.props.handleAddOneColor(this.props.NextColor.randomColors, findBallIndex, sameballsID);
+        this.props.handleAddOneColor(this.props.NextColor, findBallIndex, sameballsID);
     };
     handleClick = e => {
-        const { randomColors, NextColor, sameballsID } = this.props;
+        const { randomColor, NextColor, sameballsID } = this.props;
 
         let prevTarget = e.target.previousElementSibling;
         let nextTarget = e.target.nextElementSibling;
@@ -23,7 +23,7 @@ class Ball extends Component {
         || nextTarget.getAttribute("style") === e.target.getAttribute("style")) ? true:false
 
         // same color
-        if (NextColor.randomColors === randomColors) {
+        if (NextColor === randomColor) {
             this.handleAddOneColor(sameballsID);
             // more than one ball
             if (isMoreThanOne) {
@@ -51,9 +51,10 @@ class Ball extends Component {
         }
     };
     render() {
-        const { id, style, randomBalls, sameballsID } = this.props;
+        const { id, randomColor, randomBall, sameballsID } = this.props;
+        let style = { background: randomColor };
         return (
-            <div id={sameballsID} className='ball' data-balls={randomBalls} ball={id}
+            <div id={sameballsID} className='ball' data-ball={randomBall} ball={id}
              style={style} onClick={this.handleClick}></div>
         );
     };
@@ -62,7 +63,7 @@ class Ball extends Component {
 const mapStateToProps = getState => {
     return {
         Colors: getState.Colors,
-        NextColor: getState.NextColor,
+        NextColor: getState.NextColor.color
     };
 };
 

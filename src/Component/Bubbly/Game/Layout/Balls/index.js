@@ -31,9 +31,8 @@ class Balls extends Component {
                 {this.props.Colors.map(color => {            
                     return <Ball key={color.id} id={color.id}
                         sameballsID={color.sameballsID}
-                        style={color.style}
-                        randomColors={color.randomColors}
-                        randomBalls={color.randomBalls}
+                        randomColor={color.randomColor}
+                        randomBall={color.randomBall}
                     />
                 })}
                 {this.helperColors()}
@@ -61,7 +60,7 @@ class Balls extends Component {
 const mapStateToProps = getState => {
     return {
         Colors: getState.Colors,
-        Points: getState.Points,
+        Points: getState.Points
     };
 };
 

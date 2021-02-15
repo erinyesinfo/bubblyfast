@@ -7,6 +7,7 @@ import ScoresTime from './ScoresTime';
 import Colors from './Colors';
 import NextColor from './NextColor';
 import PlayerID from './PlayerID';
+import SessionExpires from './SessionExpires';
 import Points from './Points';
 import Username from './Username';
 import Players30Sec from './Players30Sec';
@@ -21,6 +22,7 @@ export default combineReducers({
     Colors,
     NextColor,
     PlayerID,
+    SessionExpires,
     Points,
     Username,
     Players30Sec,

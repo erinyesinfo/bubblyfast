@@ -8,7 +8,7 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 
 class Start extends Component {
-    componentDidMount() { this.props.handleNextColor(); };
+    componentDidMount() { this.props.handleNextColor() };
     callAPI = async () => {
         const cookies = new Cookies();
         const api = await Server.post("/logout");

@@ -42,7 +42,7 @@ class SignUp extends Component {
                 secure: true
             };
             cookies.set('5cec755218d9-ad3c-4c07-5c78-f907e689', 'f907e689-5c78-4c07-ad3c-5cec755218d9', option);
-            this.setState({ errors: false });
+            this.setState({ errors: [] });
             return window.location.reload();
         };
     };

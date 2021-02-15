@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';// Library that generate random id's
-import { getTheGame, getScores, getGameTime, getScoresTime, getColors, getNextColor, getPlayerID, getPoints, getUsername, getPlayers30Sec, getPlayers2Mn, getPlayers10Mn } from './types';
+import { getTheGame, getScores, getGameTime, getScoresTime, getColors, getNextColor, getPlayerID, getSessionExpires, getPoints, getUsername, getPlayers30Sec, getPlayers2Mn, getPlayers10Mn } from './types';
 
 export const handlePlayGame = playDefault => dispatch => {
     if (playDefault === true) {
@@ -36,12 +36,10 @@ export const handleScoresTime = time => dispatch => {
 /* Add one color when you click on ball */
 export const handleAddOneColor = (color, i, sameballsID) => (dispatch, getState) => {
     const oneColor = Array.from({ length: 1 }).fill().map(()=> {
-        const style = { background: color };
         return ({
             id: JSON.parse(window.localStorage.getItem("8052e6b9-48e6-4082-ad7c-38a14b9ee9d5") || uuid()),
-            randomBalls: "oneBall",
-            randomColors: color,
-            style,
+            randomBall: "oneBall",
+            randomColor: color,
             sameballsID: sameballsID || 'b'+uuid()
         })
     });
@@ -80,33 +78,29 @@ export const playAgainWithDifferentColor = () => dispatch => {
 
     // creating 20 arrays with different balls(2, 3, 4, 5)
     const Colors = Array.from({ length: 20 }).fill().map(()=> {
-        let randomBalls = [ "oneBall", "twoBalls", "threeBalls", "fourBalls", "fiveBalls" ];
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        let style = { background: randomColors };
+        let randomBall = [ "oneBall", "twoBalls", "threeBalls", "fourBalls", "fiveBalls" ];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return ({
-            randomBalls: randomBalls[Math.floor(Math.random() * randomBalls.length)],
-            randomColors,
-            style
+            randomBall: randomBall[Math.floor(Math.random() * randomBall.length)],
+            randomColor
         })
     });
 
     // find each ball category in order to duplicate based ball name
     const find = Colors.map(color =>
-        color.randomBalls === "oneBall" ? 1
-        :color.randomBalls === "twoBalls" ? 2
-        :color.randomBalls === "threeBalls" ? 3
-        :color.randomBalls === "fourBalls" ? 4
+        color.randomBall === "oneBall" ? 1
+        :color.randomBall === "twoBalls" ? 2
+        :color.randomBall === "threeBalls" ? 3
+        :color.randomBall === "fourBalls" ? 4
         :5
     );
-    // duplicate colors based on names(randomBalls)
+    // duplicate colors based on names(randomBall)
     const bubble20Color = find.map(f => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: f }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
-                randomColors,
-                style
+                randomBall: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
+                randomColor
             })
         });
     });
@@ -114,23 +108,23 @@ export const playAgainWithDifferentColor = () => dispatch => {
     /*
     * 
     * Adding bubbleMultipleColors, bubble1Color, bubble2Color, bubble3Color, bubble4Color, bubble5Color
-    * bubbleMultipleColors add randomBalls from 1 to 5
+    * bubbleMultipleColors add randomBall from 1 to 5
     * bubbleMultipleColors used many times in maxOf100Color
     * bubbleMultipleColors not used when array length in the while loop is 99, 98, 97, 96, 95
     * 
-    * bubble1Color add randomBalls of only 1
+    * bubble1Color add randomBall of only 1
     * bubble1Color used only one time in maxOf100Color when we are on 99, so we can add one
     * 
-    * bubble2Color add randomBalls of only 2
+    * bubble2Color add randomBall of only 2
     * bubble2Color used only one time in maxOf100Color when we are on 98, so we can add two
     * 
-    * bubble3Color add randomBalls of only 3
+    * bubble3Color add randomBall of only 3
     * bubble3Color used only one time in maxOf100Color when we are on 97, so we can add three
     * 
-    * bubble4Color add randomBalls of only 4
+    * bubble4Color add randomBall of only 4
     * bubble4Color used only one time in maxOf100Color when we are on 96, so we can add four
     * 
-    * bubble5Color add randomBalls of only 5
+    * bubble5Color add randomBall of only 5
     * bubble5Color used only one time in maxOf100Color when we are on 95, so we can add five
     * 
     * in order to get a total of 100 color
@@ -139,73 +133,61 @@ export const playAgainWithDifferentColor = () => dispatch => {
 
     const bubbleMultipleColors = Array.from({ length: 1 }).map(() => {
         let f = Math.ceil(Math.random() * 5);
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 1 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
-                randomColors,
-                style
+                randomBall: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
+                randomColor
             })
         });
     });
 
     const bubble1Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 1 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: "oneBall",
-                randomColors,
-                style
+                randomBall: "oneBall",
+                randomColor
             })
         });
     });
 
     const bubble2Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 2 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: "twoBalls",
-                randomColors,
-                style
+                randomBall: "twoBalls",
+                randomColor
             })
         });
     });
 
     const bubble3Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 3 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: "threeBalls",
-                randomColors,
-                style
+                randomBall: "threeBalls",
+                randomColor
             })
         });
     });
 
     const bubble4Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 4 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: "fourBalls",
-                randomColors,
-                style
+                randomBall: "fourBalls",
+                randomColor
             })
         });
     });
 
     const bubble5Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
         return Array.from({ length: 5 }).fill().map(()=> {
-            let style = { background: randomColors };
             return ({
-                randomBalls: "fiveBalls",
-                randomColors,
-                style
+                randomBall: "fiveBalls",
+                randomColor
             })
         });
     });
@@ -224,7 +206,7 @@ export const playAgainWithDifferentColor = () => dispatch => {
         let sameballsID = 'b' + uuid();
         let i = start || 0
         for(i;i<arr.length;i++) {
-            if (arr[i].style.background === arr[start].style.background) {
+            if (arr[i].randomColor === arr[start].randomColor) {
                 arr[i] = { ...arr[i], sameballsID, id: uuid() }
             } else {
                 break;
@@ -283,16 +265,14 @@ export const playAgainWithDifferentColor = () => dispatch => {
 
 /* Next color to be selected */
 export const handleNextColor = () => (dispatch, getState) => {
-    let nextColors = getState().Colors[Math.floor(Math.random() * getState().Colors.length)].randomColors;
-    const style = { background: nextColors };
+    let color = getState().Colors[Math.floor(Math.random() * getState().Colors.length)].randomColor;
     const generateId = uuid();
     window.localStorage.setItem("8052e6b9-48e6-4082-ad7c-38a14b9ee9d5", JSON.stringify(generateId))
     const data = {
         id: generateId,
-        randomBalls: "oneBall",
-        randomColors: nextColors,
-        style
-    };    
+        randomBall: "oneBall",
+        color
+    };
     return dispatch({ type: getNextColor, payload: data });
 };
 
@@ -308,7 +288,7 @@ export const handleColorsOptimize = () => (dispatch, getState) => {
         let sameballsID = 'b' + uuid();
         let i = start || 0
         for(i;i<arr.length;i++) {
-            if (arr[i].style.background === arr[start].style.background) {
+            if (arr[i].randomColor === arr[start].randomColor) {
                 arr[i] = { ...arr[i], sameballsID }
             } else {
                 break;
@@ -331,73 +311,61 @@ export const handleAddColors = () => (dispatch, getState) => {
     let colors = [ "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)", "linear-gradient(120deg, #f6d365 0%, #fda085 100%)", "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)", "linear-gradient(180deg, #2af598 0%, #009efd 100%)", "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", "linear-gradient(to top, #30cfd0 0%, #330867 100%)", "linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%)", "linear-gradient(-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%)" ];
     const bubbleMultipleColors = Array.from({ length: 1 }).map(() => {
         let f = Math.ceil(Math.random() * 5);
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 1 }).fill().map((x)=> {
-            let style = { background: randomColors };
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 1 }).fill().map(()=> {
             return ({
-                randomBalls: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
-                randomColors,
-                style
+                randomBall: (f === 1 ? "oneBall": f === 2 ? "twoBalls": f === 3 ? "threeBalls":f === 4 ? "fourBalls":"fiveBalls"),
+                randomColor
             })
         });
     });
     
     const bubble1Color = Array.from({ length: 1 }).map(() => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 1 }).fill().map((x)=> {
-            let style = { background: randomColors };
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 1 }).fill().map(()=> {
             return ({
-                randomBalls: "oneBall",
-                randomColors,
-                style
+                randomBall: "oneBall",
+                randomColor
             })
         });
     });
     
-    const bubble2Color = Array.from({ length: 1 }).map(f => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 2 }).fill().map((x)=> {
-            let style = { background: randomColors };
+    const bubble2Color = Array.from({ length: 1 }).map(() => {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 2 }).fill().map(()=> {
             return ({
-                randomBalls: "twoBalls",
-                randomColors,
-                style
+                randomBall: "twoBalls",
+                randomColor
             })
         });
     });
     
-    const bubble3Color = Array.from({ length: 1 }).map(f => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 3 }).fill().map((x)=> {
-            let style = { background: randomColors };
+    const bubble3Color = Array.from({ length: 1 }).map(() => {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 3 }).fill().map(()=> {
             return ({
-                randomBalls: "threeBalls",
-                randomColors,
-                style
+                randomBall: "threeBalls",
+                randomColor
             })
         });
     });
     
-    const bubble4Color = Array.from({ length: 1 }).map(f => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 4 }).fill().map((x)=> {
-            let style = { background: randomColors };
+    const bubble4Color = Array.from({ length: 1 }).map(() => {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 4 }).fill().map(()=> {
             return ({
-                randomBalls: "fourBalls",
-                randomColors,
-                style
+                randomBall: "fourBalls",
+                randomColor
             })
         });
     });
     
-    const bubble5Color = Array.from({ length: 1 }).map(f => {
-        let randomColors = colors[Math.floor(Math.random() * colors.length)];
-        return Array.from({ length: 5 }).fill().map((x)=> {
-            let style = { background: randomColors };
+    const bubble5Color = Array.from({ length: 1 }).map(() => {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return Array.from({ length: 5 }).fill().map(()=> {
             return ({
-                randomBalls: "fiveBalls",
-                randomColors,
-                style
+                randomBall: "fiveBalls",
+                randomColor
             })
         });
     });
@@ -440,7 +408,7 @@ export const handleAddColors = () => (dispatch, getState) => {
         let sameballsID = 'b' + uuid();
         let i = start || 0
         for(i;i<arr.length;i++) {
-            if (arr[i].style.background === arr[start].style.background) {
+            if (arr[i].randomColor === arr[start].randomColor) {
                 arr[i] = { ...arr[i], sameballsID, id: uuid() }
             } else {
                 break;
@@ -453,6 +421,10 @@ export const handleAddColors = () => (dispatch, getState) => {
 
 export const handleUpdatePlayerId = id => dispatch => {
     dispatch({ type: getPlayerID, payload: id });
+};
+
+export const handleFetchUserSessionExpires = date => dispatch => {
+    dispatch({ type: getSessionExpires, payload: date });
 };
 
 /* Each ball worth 10 point */
