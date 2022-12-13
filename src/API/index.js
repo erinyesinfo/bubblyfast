@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://bubblyfast.herokuapp.com',
+    baseURL: process.env.REACT_APP_SERVER_API_KEY,
     withCredentials: true
 });
